@@ -1,0 +1,56 @@
+.scoreboard-container {
+    background-color: #1B244A;
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    text-align: center;
+    align-items: center;
+    padding: 100px 0;
+    justify-content: center;
+    gap: 80px;
+}
+
+h1 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.score {
+    font-family: 'Cursed Timer ULil', sans-serif;
+    background-color: black;
+    padding: 25px 50px;
+    width: max-content;
+    margin: 0 auto;
+    border-radius: 15px;
+    font-size: 90px;
+    color: #F94F6D;
+}
+
+.score-btns-container {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+button {
+    border: 4px solid #9AABDB;
+    background-color: transparent;
+    padding: 9px 15px 8px;
+    font-size: 18px;
+    color: #9AABDB;
+    font-family: 'Cursed Timer ULil', sans-serif;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: orange;
+    color: red
+}
+
+.winning {
+    background-color: rgb(221, 188, 0);
+}
