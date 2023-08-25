@@ -3,70 +3,62 @@ const awayContainer = document.getElementById("away");
 const homeScore = document.getElementById("home-score");
 const awayScore = document.getElementById("away-score");
 
-const homePlusOne = homeContainer.querySelector("#add1-btn");
-const homePlusTwo = homeContainer.querySelector("#add2-btn");
-const homePlusThree = homeContainer.querySelector("#add3-btn");
-
-const awayPlusOne = awayContainer.querySelector("#add1-btn");
-const awayPlusTwo = awayContainer.querySelector("#add2-btn");
-const awayPlusThree = awayContainer.querySelector("#add3-btn");
-
 const newGameBtn = document.getElementById("new-game-btn");
 
-let homeScoreTotal = 0;
-let awayScoreTotal = 0;
+const teams = [
+  {
+    teamContainer: homeContainer,
+    totalScore: 0,
+    scoreEl: homeScore,
+  },
+  {
+    teamContainer: awayContainer,
+    totalScore: 0,
+    scoreEl: awayScore,
+  },
+];
+
+function updateScore(team, points) {
+  team.totalScore += points;
+  team.scoreEl.textContent = team.totalScore;
+  checkLeader();
+}
+
+function addEvntListener(team) {
+  const buttonList = ["add1-btn", "add2-btn", "add3-btn"];
+  const buttons = buttonList.map((btn) => {
+    return team.teamContainer.querySelector(`#${btn}`);
+  });
+
+  buttons.map((btn, index) => {
+    btn.addEventListener("click", () => {
+      updateScore(team, index + 1);
+    });
+  });
+}
 
 function checkLeader() {
-  if (homeScoreTotal > awayScoreTotal) {
-    homeScore.classList.add("winning");
-    awayScore.classList.remove("winning");
-  } else if (homeScoreTotal < awayScoreTotal) {
-    awayScore.classList.add("winning");
-    homeScore.classList.remove("winning");
+  teams.map((team) => team.scoreEl.classList.remove("winning"));
+  let highestScore = 0;
+  let winningTeam = null;
+  teams.forEach((team) => {
+    if (team.totalScore > highestScore) {
+      highestScore = team.totalScore;
+      winningTeam = team;
+    }
+  });
+
+  if (winningTeam) {
+    winningTeam.scoreEl.classList.add("winning");
   }
 }
 
-homePlusOne.addEventListener("click", () => {
-  homeScoreTotal += 1;
-  homeScore.textContent = homeScoreTotal;
-  checkLeader();
-});
-
-homePlusTwo.addEventListener("click", () => {
-  homeScoreTotal += 2;
-  homeScore.textContent = homeScoreTotal;
-  checkLeader();
-});
-
-homePlusThree.addEventListener("click", () => {
-  homeScoreTotal += 3;
-  homeScore.textContent = homeScoreTotal;
-  checkLeader();
-});
-
-awayPlusOne.addEventListener("click", () => {
-  awayScoreTotal += 1;
-  awayScore.textContent = awayScoreTotal;
-  checkLeader();
-});
-
-awayPlusTwo.addEventListener("click", () => {
-  awayScoreTotal += 2;
-  awayScore.textContent = awayScoreTotal;
-  checkLeader();
-});
-
-awayPlusThree.addEventListener("click", () => {
-  awayScoreTotal += 3;
-  awayScore.textContent = awayScoreTotal;
-  checkLeader();
-});
+teams.map((team) => addEvntListener(team));
 
 newGameBtn.addEventListener("click", () => {
-  homeScoreTotal = 0;
-  awayScoreTotal = 0;
-  homeScore.textContent = homeScoreTotal;
-  awayScore.textContent = awayScoreTotal;
-  homeScore.classList.remove("winning");
-  awayScore.classList.remove("winning");
+  teams.map((team) => {
+    team.totalScore = 0;
+    team.scoreEl.textContent = team.totalScore;
+    team.scoreEl.classList.remove("winning");
+  });
 });
