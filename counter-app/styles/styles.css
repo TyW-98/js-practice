@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vvh;
+    margin-top: 500px;
+    background-color: antiquewhite;
+}
+
+button {
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    padding: 15px 0;
+    width: 350px;
+}
+
+button:active {
+    opacity: 90%;
+    border: 2px skyblue solid;
+    color: black;
+}
+
+#increment-btn {
+    background-color: darkred;
+}
+
+#increment-btn:active {
+    background-color: rgba(239, 197, 12, 0.863);
+}
+
+#save-btn {
+    margin-top: 25px;
+    background-color: navy;
+}
+
+#save-btn:active {
+    background-color: aquamarine;
+}
+
+#count-history {
+    font-weight: bold;
+}
