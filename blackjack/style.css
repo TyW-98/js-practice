@@ -1,0 +1,35 @@
+body {
+    background-image: url("./background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 48pt;
+    color: goldenrod;
+}
+
+h5 {
+    font-size: 28pt;
+}
+
+#start-game-btn {
+    padding: 5px 50px;
+    border: solid black 1px;
+    font-size: 28pt;
+    color: green;
+    background-color: goldenrod;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#start-game-btn:active {
+    background-color: orange;
+    opacity: 80%;
+    color: white;
+}
