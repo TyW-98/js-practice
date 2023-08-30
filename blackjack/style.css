@@ -18,7 +18,15 @@ h5 {
     font-size: 28pt;
 }
 
-#start-game-btn {
+.controls {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+button {
     padding: 5px 50px;
     border: solid black 1px;
     font-size: 28pt;
@@ -28,7 +36,7 @@ h5 {
     cursor: pointer;
 }
 
-#start-game-btn:active {
+button:active {
     background-color: orange;
     opacity: 80%;
     color: white;
