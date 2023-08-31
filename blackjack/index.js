@@ -1,19 +1,33 @@
 function randomNumber() {
-  return Math.floor(Math.random() * (7 - 2) + 2);
+  let newCardNumber = Math.floor(Math.random() * 13) + 1;
+  if (newCardNumber === 1) {
+    newCardNumber = 11;
+  } else if (newCardNumber > 10) {
+    newCardNumber = 10;
+  }
+
+  return newCardNumber;
 }
 
-const firstCard = randomNumber();
-const secondCard = randomNumber();
-const cardsDrawn = [firstCard, secondCard];
+const cardsDrawn = [];
 
-let sum = firstCard + secondCard;
-let gameStatus = "playing";
+let sum = 0;
 let message;
+let gameStatus;
 
 const startGameBtn = document.getElementById("start-game-btn");
 const messageEl = document.getElementById("message-el");
 const sumEl = document.getElementById("sum-el");
 const cardEl = document.getElementById("card-el");
+const playerElement = document.getElementById("player-el");
+const startingAmount = 500;
+
+const playerDetails = {
+  name: "Test User",
+  chipsLeft: startingAmount,
+};
+
+playerElement.textContent = `${playerDetails.name} : $ ${playerDetails.chipsLeft}`;
 
 function renderGame() {
   if (sum <= 20) {
@@ -31,6 +45,11 @@ function renderGame() {
 }
 
 function newGame() {
+  const firstCard = randomNumber();
+  const secondCard = randomNumber();
+  cardsDrawn.push(firstCard, secondCard);
+  sum = firstCard + secondCard;
+  gameStatus = "playing";
   renderGame();
 }
 
@@ -39,10 +58,12 @@ startGameBtn.addEventListener("click", newGame);
 const newCardBtn = document.getElementById("new-card-btn");
 
 function newCard() {
-  const newCard = randomNumber();
-  sum += newCard;
-  cardsDrawn.push(newCard);
-  renderGame();
+  if (gameStatus == "playing" && sum < 21) {
+    const newCard = randomNumber();
+    sum += newCard;
+    cardsDrawn.push(newCard);
+    renderGame();
+  }
 }
 
 newCardBtn.addEventListener("click", newCard);
