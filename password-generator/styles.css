@@ -1,0 +1,65 @@
+body {
+    background-color: #1F2937;
+    color: white;
+    font-family: 'Courier New', Courier, monospace
+}
+
+h1 {
+    font-size: 40pt;
+    font-weight: 800;
+    line-height: 40px;
+}
+
+.sub-heading {
+    color: #4ADF86;
+    display: block;
+    margin-top: 10px;
+}
+
+h5 {
+    font-size: 20pt;
+    font-weight: normal;
+    line-height: 28px;
+}
+
+.hero {
+    width: max-content;
+    margin: 0 auto;
+    border-bottom: 1px solid grey;
+    padding-bottom: 50px;
+}
+
+#gen-password-btn {
+    padding: 9px 17px 9px 15px;
+    border-radius: 5px;
+    background-color: #10B981;
+    color: white;
+    font-size: 16pt;
+    font-weight: 500;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+#gen-password-btn:active {
+    opacity: 80%;
+}
+
+.display-password {
+    display: flex;
+    gap: 50px;
+    width: max-content;
+    margin: 40px auto 0;
+}
+
+.password {
+    background-color: #273549;
+    min-width: 250px;
+    min-height: 40px;
+    border-radius: 5px;
+    color: #55F991;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: 500;
+    line-height: 32px;
+    padding: 4px 10px;
+}
