@@ -62,4 +62,5 @@ h5 {
     font-weight: 500;
     line-height: 32px;
     padding: 4px 10px;
+    cursor: pointer;
 }

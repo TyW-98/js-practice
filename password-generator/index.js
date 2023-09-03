@@ -124,3 +124,9 @@ generatePasswordBtn.addEventListener("click", () => {
     password1Status = "old";
   }
 });
+
+password1Box.addEventListener("click", () => {
+  if (password1Box.textContent) {
+    navigator.clipboard.writeText(password1Box.textContent);
+  }
+});
